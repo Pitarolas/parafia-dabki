@@ -1,0 +1,130 @@
+<header class="naglowek">
+  <div class="wrap naglowek-in">
+    <a class="logo" href="#top">
+      <span class="logo-znak" aria-hidden="true">{{ZNAK}}</span>
+      <span class="logo-txt"><span class="logo-gora">Parafia w Dąbkach</span><span class="logo-dol">Matki Bożej z Góry Karmel</span></span>
+    </a>
+    <nav class="menu" aria-label="Sekcje strony">
+      <a href="#msze">Msze</a>
+      <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#historia">Historia</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#dojazd">Dojazd</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-tekst">
+        <p class="eyebrow">Dąbki · gmina Darłowo · diecezja koszalińsko-kołobrzeska</p>
+        <h1>Parafia Matki Bożej z&nbsp;Góry Karmel w&nbsp;Dąbkach</h1>
+        <p class="hero-lead">Witamy parafian i wczasowiczów. Tu znajdziesz godziny mszy świętych, aktualne ogłoszenia i drogę do kościoła.</p>
+        <div class="hero-akcje">
+          <a class="btn btn-glowny" href="#msze">Godziny mszy</a>
+          <a class="btn btn-drugi" href="#dojazd">Jak dojechać</a>
+        </div>
+      </div>
+      <div class="hero-dol">
+      <figure class="hero-foto"><img src="img/kosciol-front.jpg" alt="Kościół Matki Bożej z Góry Karmel w Dąbkach, widok od frontu" width="1600" height="1200"></figure>
+      <aside class="najblizsza" aria-live="polite">
+        <p class="najblizsza-etykieta">Najbliższa msza święta</p>
+        <p class="najblizsza-czas" id="najblizsza-czas">…</p>
+        <p class="najblizsza-dzien" id="najblizsza-dzien"></p>
+        <p class="najblizsza-uwaga">W uroczystości godziny mogą być inne. Sprawdź ogłoszenia.</p>
+      </aside>
+      </div>
+    </div>
+    {{HERO_ART}}
+  </section>
+
+  <section id="msze" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Msze święte</h2>
+        <p class="sekcja-opis" id="msze-opis">Rozkład zmienia się z sezonem letnim.</p>
+      </div>
+      <div class="msze-siatka" id="msze-lista"></div>
+    </div>
+  </section>
+
+  <section id="ogloszenia" class="sekcja sekcja-alt">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Ogłoszenia duszpasterskie</h2>
+        <p class="sekcja-opis" id="ogloszenia-data"></p>
+      </div>
+      <ol class="ogloszenia" id="ogloszenia-lista"></ol>
+      <div class="ogloszenia-koniec" id="ogloszenia-koniec"></div>
+      <p class="podpis-proboszcza">ks. Andrzej Pęcherzewski, proboszcz</p>
+    </div>
+  </section>
+
+  <section id="historia" class="sekcja sekcja-alt">
+    <div class="wrap historia">
+      <div class="historia-tekst">
+        <h2>Z historii parafii</h2>
+        <p>Matka Boża z Góry Karmel to tytuł Maryi związany ze szkaplerzem karmelitańskim. Jej wspomnienie Kościół obchodzi 16 lipca, w samym środku sezonu letniego, kiedy Dąbki są pełne gości.</p>
+        <p>Budowę kościoła w Dąbkach rozpoczęto w 1985 roku. Jasne, przestronne wnętrze z drewnianym krzyżem nad ołtarzem i ikoną Matki Bożej gromadzi przez cały rok parafian, a latem także wczasowiczów.</p>
+      </div>
+      <dl class="fakty">
+        <div><dt>Wezwanie</dt><dd>Matki Bożej z Góry Karmel</dd></div>
+        <div><dt>Wspomnienie patronki</dt><dd>16 lipca</dd></div>
+        <div><dt>Budowa kościoła</dt><dd>od 1985 r.</dd></div>
+        <div><dt>Adres</dt><dd>ul. Darłowska 14</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="galeria" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Galeria</h2>
+        <p class="sekcja-opis">Kościół i jego wnętrze. Kliknij zdjęcie, aby je powiększyć.</p>
+      </div>
+      <ul class="galeria">
+        <li><a href="img/kosciol-front.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kosciol-front-maly.jpg" alt="Kościół od frontu" loading="lazy" width="720" height="540"></a><span class="podpis">Kościół od frontu</span></li>
+        <li><a href="img/kosciol-wejscie.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kosciol-wejscie-maly.jpg" alt="Wejście z podjazdem dla wózków" loading="lazy" width="720" height="540"></a><span class="podpis">Wejście z podjazdem dla wózków</span></li>
+        <li><a href="img/wnetrze.jpg" target="_blank" rel="noopener"><img class="foto" src="img/wnetrze-maly.jpg" alt="Wnętrze kościoła" loading="lazy" width="720" height="540"></a><span class="podpis">Wnętrze kościoła</span></li>
+        <li><a href="img/prezbiterium.jpg" target="_blank" rel="noopener"><img class="foto" src="img/prezbiterium-maly.jpg" alt="Ołtarz i krzyż pod świetlikiem" loading="lazy" width="720" height="540"></a><span class="podpis">Ołtarz i krzyż pod świetlikiem</span></li>
+        <li><a href="img/ikona-maryi.jpg" target="_blank" rel="noopener"><img class="foto" src="img/ikona-maryi-maly.jpg" alt="Ikona Matki Bożej" loading="lazy" width="720" height="540"></a><span class="podpis">Ikona Matki Bożej</span></li>
+        <li><a href="img/kaplica-boczna.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kaplica-boczna-maly.jpg" alt="Kaplica Matki Bożej" loading="lazy" width="720" height="540"></a><span class="podpis">Kaplica Matki Bożej</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="dojazd" class="sekcja sekcja-alt">
+    <div class="wrap dojazd">
+      <div class="dojazd-tekst">
+        <h2>Dojazd</h2>
+        <p class="adres">Kościół parafialny<br>ul. Darłowska 14<br>76-156 Dąbki</p>
+        <div class="dojazd-akcje">
+          <a class="btn btn-glowny" id="link-trasa" href="#" target="_blank" rel="noopener">Wyznacz trasę</a>
+          <a class="btn btn-drugi" id="link-mapa" href="#" target="_blank" rel="noopener">Otwórz w Mapach Google</a>
+        </div>
+      </div>
+      <div class="mapa" id="mapa">
+        <div class="mapa-zastepnik">
+          <p>Tu na stronie docelowej pojawi się mapa Google z zaznaczonym kościołem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa"><h2>Kontakt</h2></div>
+      <dl class="kontakt">
+        <div><dt>Telefon</dt><dd><a href="tel:+48943148608">94 314 86 08</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:dabki@koszalin.opoka.org.pl">dabki@koszalin.opoka.org.pl</a></dd></div>
+        <div class="konto"><dt>Konto parafii (Bank Pekao S.A.)</dt><dd><span id="nr-konta">40 1240 1428 1111 0010 4709 4892</span> <button type="button" class="kopiuj" id="kopiuj-konto">Kopiuj numer</button></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="stopka">
+  <div class="wrap">Parafia Rzymskokatolicka pw. Matki Bożej z Góry Karmel w Dąbkach · ul. Darłowska 14, 76-156 Dąbki</div>
+</footer>

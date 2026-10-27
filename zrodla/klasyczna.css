@@ -1,0 +1,85 @@
+/* Klasyczna: pergamin, bordo i złoto, kroje o rodowodzie inskrypcyjnym. Symetryczny nagłówek z ornamentem, sekcje oddzielone podwójną złotą linią. */
+:root {
+  --tlo: #F7F2E8; --tlo-alt: #F0E8D8; --karta-tlo: #FFFDF8;
+  --tekst: #2A1D19; --tekst-2: #5F4E44; --linia: #E0D2B8;
+  --link: #7A1F2B; --akcent: #9C7A2E; --akcent-tekst: #7A1F2B; --na-akcencie: #FFFDF8;
+  --teraz-tlo: #FBF3E2;
+  --naglowek-tlo: #6E1A25; --naglowek-tekst: #F7EBDD; --naglowek-linia: #5A141E;
+  --hero-tlo: #F7F2E8; --hero-tekst: #2A1D19;
+  --btn-tlo: #7A1F2B; --btn-tekst: #FFF8EE;
+  --zloto: #A9862F;
+  --uwaga-tlo: #EADFC6; --uwaga-tekst: #3D2C12;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #EFE4CF 0 30%, #E6D8BD 70%);
+  --zaokr: 3px;
+  --font-tytul: "Marcellus", "Palatino Linotype", Georgia, serif;
+  --font-tekst: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --tlo: #18110F; --tlo-alt: #201714; --karta-tlo: #261B18;
+  --tekst: #F1E7D8; --tekst-2: #C4B39F; --linia: #42322B;
+  --link: #E39AA2; --akcent: #D3B061; --akcent-tekst: #E8BF6E; --na-akcencie: #1E150E;
+  --teraz-tlo: #2E221B;
+  --naglowek-tlo: #2A0E13; --naglowek-tekst: #F1E3D3; --naglowek-linia: #3B141B;
+  --hero-tlo: #18110F; --hero-tekst: #F1E7D8;
+  --btn-tlo: #C9707B; --btn-tekst: #1E0C0F;
+  --zloto: #C9A658;
+  --uwaga-tlo: #33281A; --uwaga-tekst: #EBD9B4;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #2C211C 0 30%, #231A16 70%);
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --tlo: #18110F; --tlo-alt: #201714; --karta-tlo: #261B18;
+  --tekst: #F1E7D8; --tekst-2: #C4B39F; --linia: #42322B;
+  --link: #E39AA2; --akcent: #D3B061; --akcent-tekst: #E8BF6E; --na-akcencie: #1E150E;
+  --teraz-tlo: #2E221B;
+  --naglowek-tlo: #2A0E13; --naglowek-tekst: #F1E3D3; --naglowek-linia: #3B141B;
+  --hero-tlo: #18110F; --hero-tekst: #F1E7D8;
+  --btn-tlo: #C9707B; --btn-tekst: #1E0C0F;
+  --zloto: #C9A658;
+  --uwaga-tlo: #33281A; --uwaga-tekst: #EBD9B4;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #2C211C 0 30%, #231A16 70%);
+  color-scheme: dark;
+}
+h1, h2, h3 { font-weight: 400; }
+h2 { letter-spacing: .01em; }
+.logo-znak { color: var(--zloto); }
+.logo-dol { letter-spacing: .02em; }
+.menu a:hover { border-bottom-color: var(--zloto); }
+.hero { border-bottom: 1px solid var(--linia); }
+.hero-in { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding-block: 3.5rem 2rem; gap: 2.2rem; }
+.hero-lead { margin-inline: auto; }
+.hero-akcje { justify-content: center; }
+.hero h1 { color: var(--link); }
+.eyebrow { color: var(--tekst-2); opacity: 1; }
+.ornament { display: block; width: min(22rem, 70%); height: 1.6rem; margin: -.5rem auto 0; color: var(--zloto); position: relative; z-index: 1; }
+.hero .ornament { margin: 0 auto 2.5rem; }
+.najblizsza { width: min(100%, 26rem); border: 1px solid var(--zloto); outline: 1px solid var(--zloto); outline-offset: 4px; text-align: center; }
+.najblizsza-czas { color: var(--link); }
+.sekcja-glowa { justify-items: center; text-align: center; margin-inline: auto; }
+.sekcja-glowa h2::after { content: ""; display: block; width: 4.5rem; height: 5px; margin: .8rem auto 0; border-block: 1px solid var(--zloto); }
+.msze-karta { border: 1px solid var(--linia); border-top: 3px double var(--zloto); }
+.msze-karta h3 { text-align: center; color: var(--link); }
+.godzina { font-family: var(--font-tekst); font-weight: 600; }
+.ogloszenia { margin-inline: auto; }
+.ogloszenia li { padding-bottom: 1rem; border-bottom: 1px solid var(--linia); }
+.ogloszenia li:last-child { border-bottom: 0; }
+.intencje { margin-inline: auto; }
+.fakty { border: 1px solid var(--linia); border-top: 3px double var(--zloto); }
+.historia-tekst p:first-of-type::first-letter { font-family: var(--font-tytul); float: left; font-size: 3.4rem; line-height: .9; padding: .3rem .5rem 0 0; color: var(--link); }
+.foto { border: 1px solid var(--linia); }
+.galeria .podpis { text-align: center; font-style: italic; }
+.hero-dol { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2rem; align-items: center; width: 100%; max-width: 60rem; }
+.hero-foto { margin: 0; padding: 6px; background: var(--karta-tlo); border: 1px solid var(--zloto); }
+.hero-foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.hero-dol .najblizsza { width: 100%; }
+.galeria a { display: block; }
+.galeria img.foto { width: 100%; height: auto; object-fit: cover; transition: opacity .15s; }
+.galeria a:hover img.foto { opacity: .88; }
+.ogloszenia-koniec { max-width: 46rem; margin: 2rem auto 0; text-align: center; font-style: italic; color: var(--link); }
+.podpis-proboszcza { max-width: 46rem; margin: 1rem auto 0; text-align: right; font-style: italic; }
+.konto dd { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; font-variant-numeric: tabular-nums; }
+.kopiuj { font: inherit; font-size: .9rem; font-weight: 600; padding: .3rem .8rem; border: 1px solid var(--link); color: var(--link); background: transparent; border-radius: var(--zaokr); cursor: pointer; }
+.kopiuj:hover { background: var(--teraz-tlo); }
+.kopiuj:focus-visible { outline: 3px solid var(--akcent); outline-offset: 2px; }
+@media (max-width: 760px) { .hero-dol { grid-template-columns: minmax(0, 1fr); } }
+.okres-dni { margin-top: .35rem; font-size: .95rem; }

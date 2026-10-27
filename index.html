@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parafia Matki Bożej z Góry Karmel w Dąbkach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Parafia Matki Bożej z Góry Karmel w Dąbkach: godziny mszy świętych, ogłoszenia duszpasterskie, intencje i dojazd.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Wspólny układ obu wersji. Kolory i kroje pism pochodzą z tokenów danej wersji. */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--tlo); color: var(--tekst);
+  font-family: var(--font-tekst); font-size: 1.125rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--naglowek-tlo); }
+.wrap {
+  max-width: 68rem; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-tytul); text-wrap: balance; margin: 0; line-height: 1.15; }
+h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); }
+h3 { font-size: 1.3rem; }
+p { margin: 0; }
+a { color: var(--link); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--akcent); outline-offset: 3px; border-radius: 4px; }
+
+.wersja-robocza { background: var(--uwaga-tlo); color: var(--uwaga-tekst); font-size: .9rem; line-height: 1.45; }
+.wersja-robocza .wrap { padding-block: .6rem; }
+
+.naglowek {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--naglowek-tlo); color: var(--naglowek-tekst);
+  border-bottom: 1px solid var(--naglowek-linia);
+}
+.naglowek-in { display: flex; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; flex-wrap: wrap; padding-block: .7rem; }
+.logo { display: flex; align-items: center; gap: .7rem; color: inherit; text-decoration: none; min-width: 0; }
+.logo-znak { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; flex: none; }
+.logo-znak svg { width: 100%; height: 100%; }
+.logo-txt { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.logo-gora { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+.logo-dol { font-family: var(--font-tytul); font-size: 1.1rem; }
+.menu { display: flex; flex-wrap: wrap; gap: .25rem 1.1rem; font-size: 1rem; }
+.menu a { color: inherit; text-decoration: none; padding-block: .2rem; border-bottom: 2px solid transparent; }
+.menu a:hover { border-bottom-color: var(--akcent); }
+
+.hero { position: relative; background: var(--hero-tlo); color: var(--hero-tekst); overflow: hidden; }
+.hero-in { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem; align-items: center; padding-block: 3.5rem 4.5rem; }
+.eyebrow { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; margin-bottom: .9rem; }
+.hero h1 { font-size: clamp(2.1rem, 1.4rem + 3vw, 3.6rem); }
+.hero-lead { margin-top: 1.1rem; max-width: 36rem; font-size: 1.2rem; opacity: .92; }
+.hero-akcje, .dojazd-akcje { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.6rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 3rem;
+  padding: .7rem 1.3rem; font-weight: 600; font-size: 1.05rem; text-decoration: none;
+  border-radius: var(--zaokr); border: 2px solid transparent; transition: transform .15s, background-color .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+.btn-glowny { background: var(--btn-tlo); color: var(--btn-tekst); }
+.btn-drugi { background: transparent; color: inherit; border-color: currentColor; }
+
+.najblizsza { background: var(--karta-tlo); color: var(--tekst); padding: 1.5rem; border-radius: var(--zaokr); }
+.najblizsza-etykieta { font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tekst-2); }
+.najblizsza-czas { font-family: var(--font-tytul); font-size: 3.4rem; line-height: 1.1; margin-top: .3rem; color: var(--akcent-tekst); font-variant-numeric: tabular-nums; }
+.najblizsza-dzien { font-size: 1.15rem; font-weight: 600; }
+.najblizsza-uwaga { margin-top: .8rem; font-size: .9rem; color: var(--tekst-2); }
+
+.sekcja { padding-block: 4rem; }
+.sekcja-alt { background: var(--tlo-alt); }
+.sekcja-glowa { display: grid; gap: .5rem; margin-bottom: 2rem; max-width: 42rem; }
+.sekcja-opis { color: var(--tekst-2); }
+
+.msze-siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1.5rem; }
+.msze-karta { background: var(--karta-tlo); border-radius: var(--zaokr); padding: 1.5rem; min-width: 0; }
+.msze-karta ul { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .75rem; }
+.okres { padding: .9rem 1rem; border-radius: calc(var(--zaokr) * .6); border: 1px solid var(--linia); color: var(--tekst-2); }
+.okres.teraz { border-color: var(--akcent); background: var(--teraz-tlo); color: var(--tekst); }
+.okres-glowa { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem; }
+.okres-nazwa { font-weight: 600; }
+.znacznik { font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; background: var(--akcent); color: var(--na-akcencie); padding: .15rem .55rem; border-radius: 99px; }
+.godziny { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .55rem; }
+.godzina { font-family: var(--font-tytul); font-size: 1.6rem; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.godzina + .godzina::before { content: "·"; margin-right: .5rem; color: var(--tekst-2); }
+.okres-uwagi { margin-top: .35rem; font-size: .95rem; }
+
+.ogloszenia { max-width: 46rem; margin: 0; padding-left: 1.6rem; display: grid; gap: 1rem; }
+.ogloszenia li { padding-left: .4rem; }
+.ogloszenia li::marker { font-family: var(--font-tytul); font-weight: 700; color: var(--akcent-tekst); }
+.ogloszenia .brak { list-style: none; color: var(--tekst-2); }
+
+.tabela-wrap { overflow-x: auto; }
+.intencje { width: 100%; max-width: 50rem; border-collapse: collapse; }
+.intencje th { text-align: left; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tekst-2); padding: .5rem .75rem; border-bottom: 2px solid var(--linia); }
+.intencje td { padding: .6rem .75rem; vertical-align: top; border-bottom: 1px solid var(--linia); }
+.intencje td:nth-child(1) { font-weight: 600; white-space: nowrap; }
+.intencje td:nth-child(2) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.historia { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.historia-tekst { display: grid; gap: 1rem; max-width: 40rem; }
+.zastepnik { color: var(--tekst-2); font-style: italic; }
+.fakty { margin: 0; display: grid; gap: 0; background: var(--karta-tlo); border-radius: var(--zaokr); padding: .5rem 1.25rem; }
+.fakty div, .kontakt div { display: grid; gap: .1rem; padding-block: .8rem; border-bottom: 1px solid var(--linia); }
+.fakty div:last-child, .kontakt div:last-child { border-bottom: 0; }
+dt { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--tekst-2); }
+dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+
+.galeria { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.galeria li { display: grid; gap: .5rem; }
+.foto { display: block; aspect-ratio: 4 / 3; max-width: 100%; border-radius: var(--zaokr); background: var(--foto-tlo); }
+.podpis { font-size: .95rem; color: var(--tekst-2); }
+
+.dojazd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem; align-items: center; }
+.dojazd-tekst { display: grid; gap: 1rem; }
+.dojazd-tekst .dojazd-akcje { margin-top: .5rem; }
+.dojazd .btn-drugi { color: var(--link); }
+.adres { font-size: 1.25rem; line-height: 1.5; }
+.mapa { aspect-ratio: 4 / 3; max-width: 100%; border-radius: var(--zaokr); overflow: hidden; background: var(--foto-tlo); }
+.mapa iframe { width: 100%; height: 100%; border: 0; display: block; }
+.mapa-zastepnik { height: 100%; display: grid; place-items: center; padding: 1.5rem; text-align: center; color: var(--tekst-2); }
+
+.kontakt { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 0 2rem; }
+.kontakt div { border-bottom: 0; border-top: 2px solid var(--linia); }
+
+.stopka { background: var(--naglowek-tlo); color: var(--naglowek-tekst); font-size: .9rem; }
+.stopka .wrap { padding-block: 1.8rem; }
+
+@media (max-width: 760px) {
+  .hero-in, .historia, .dojazd { grid-template-columns: minmax(0, 1fr); }
+  .hero-in { padding-block: 2.5rem 3.5rem; }
+  .sekcja { padding-block: 3rem; }
+  .menu { font-size: .95rem; gap: .2rem .9rem; }
+}
+
+/* Klasyczna: pergamin, bordo i złoto, kroje o rodowodzie inskrypcyjnym. Symetryczny nagłówek z ornamentem, sekcje oddzielone podwójną złotą linią. */
+:root {
+  --tlo: #F7F2E8; --tlo-alt: #F0E8D8; --karta-tlo: #FFFDF8;
+  --tekst: #2A1D19; --tekst-2: #5F4E44; --linia: #E0D2B8;
+  --link: #7A1F2B; --akcent: #9C7A2E; --akcent-tekst: #7A1F2B; --na-akcencie: #FFFDF8;
+  --teraz-tlo: #FBF3E2;
+  --naglowek-tlo: #6E1A25; --naglowek-tekst: #F7EBDD; --naglowek-linia: #5A141E;
+  --hero-tlo: #F7F2E8; --hero-tekst: #2A1D19;
+  --btn-tlo: #7A1F2B; --btn-tekst: #FFF8EE;
+  --zloto: #A9862F;
+  --uwaga-tlo: #EADFC6; --uwaga-tekst: #3D2C12;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #EFE4CF 0 30%, #E6D8BD 70%);
+  --zaokr: 3px;
+  --font-tytul: "Marcellus", "Palatino Linotype", Georgia, serif;
+  --font-tekst: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --tlo: #18110F; --tlo-alt: #201714; --karta-tlo: #261B18;
+  --tekst: #F1E7D8; --tekst-2: #C4B39F; --linia: #42322B;
+  --link: #E39AA2; --akcent: #D3B061; --akcent-tekst: #E8BF6E; --na-akcencie: #1E150E;
+  --teraz-tlo: #2E221B;
+  --naglowek-tlo: #2A0E13; --naglowek-tekst: #F1E3D3; --naglowek-linia: #3B141B;
+  --hero-tlo: #18110F; --hero-tekst: #F1E7D8;
+  --btn-tlo: #C9707B; --btn-tekst: #1E0C0F;
+  --zloto: #C9A658;
+  --uwaga-tlo: #33281A; --uwaga-tekst: #EBD9B4;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #2C211C 0 30%, #231A16 70%);
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --tlo: #18110F; --tlo-alt: #201714; --karta-tlo: #261B18;
+  --tekst: #F1E7D8; --tekst-2: #C4B39F; --linia: #42322B;
+  --link: #E39AA2; --akcent: #D3B061; --akcent-tekst: #E8BF6E; --na-akcencie: #1E150E;
+  --teraz-tlo: #2E221B;
+  --naglowek-tlo: #2A0E13; --naglowek-tekst: #F1E3D3; --naglowek-linia: #3B141B;
+  --hero-tlo: #18110F; --hero-tekst: #F1E7D8;
+  --btn-tlo: #C9707B; --btn-tekst: #1E0C0F;
+  --zloto: #C9A658;
+  --uwaga-tlo: #33281A; --uwaga-tekst: #EBD9B4;
+  --foto-tlo: radial-gradient(circle at 50% 40%, #2C211C 0 30%, #231A16 70%);
+  color-scheme: dark;
+}
+h1, h2, h3 { font-weight: 400; }
+h2 { letter-spacing: .01em; }
+.logo-znak { color: var(--zloto); }
+.logo-dol { letter-spacing: .02em; }
+.menu a:hover { border-bottom-color: var(--zloto); }
+.hero { border-bottom: 1px solid var(--linia); }
+.hero-in { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding-block: 3.5rem 2rem; gap: 2.2rem; }
+.hero-lead { margin-inline: auto; }
+.hero-akcje { justify-content: center; }
+.hero h1 { color: var(--link); }
+.eyebrow { color: var(--tekst-2); opacity: 1; }
+.ornament { display: block; width: min(22rem, 70%); height: 1.6rem; margin: -.5rem auto 0; color: var(--zloto); position: relative; z-index: 1; }
+.hero .ornament { margin: 0 auto 2.5rem; }
+.najblizsza { width: min(100%, 26rem); border: 1px solid var(--zloto); outline: 1px solid var(--zloto); outline-offset: 4px; text-align: center; }
+.najblizsza-czas { color: var(--link); }
+.sekcja-glowa { justify-items: center; text-align: center; margin-inline: auto; }
+.sekcja-glowa h2::after { content: ""; display: block; width: 4.5rem; height: 5px; margin: .8rem auto 0; border-block: 1px solid var(--zloto); }
+.msze-karta { border: 1px solid var(--linia); border-top: 3px double var(--zloto); }
+.msze-karta h3 { text-align: center; color: var(--link); }
+.godzina { font-family: var(--font-tekst); font-weight: 600; }
+.ogloszenia { margin-inline: auto; }
+.ogloszenia li { padding-bottom: 1rem; border-bottom: 1px solid var(--linia); }
+.ogloszenia li:last-child { border-bottom: 0; }
+.intencje { margin-inline: auto; }
+.fakty { border: 1px solid var(--linia); border-top: 3px double var(--zloto); }
+.historia-tekst p:first-of-type::first-letter { font-family: var(--font-tytul); float: left; font-size: 3.4rem; line-height: .9; padding: .3rem .5rem 0 0; color: var(--link); }
+.foto { border: 1px solid var(--linia); }
+.galeria .podpis { text-align: center; font-style: italic; }
+.hero-dol { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2rem; align-items: center; width: 100%; max-width: 60rem; }
+.hero-foto { margin: 0; padding: 6px; background: var(--karta-tlo); border: 1px solid var(--zloto); }
+.hero-foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.hero-dol .najblizsza { width: 100%; }
+.galeria a { display: block; }
+.galeria img.foto { width: 100%; height: auto; object-fit: cover; transition: opacity .15s; }
+.galeria a:hover img.foto { opacity: .88; }
+.ogloszenia-koniec { max-width: 46rem; margin: 2rem auto 0; text-align: center; font-style: italic; color: var(--link); }
+.podpis-proboszcza { max-width: 46rem; margin: 1rem auto 0; text-align: right; font-style: italic; }
+.konto dd { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; font-variant-numeric: tabular-nums; }
+.kopiuj { font: inherit; font-size: .9rem; font-weight: 600; padding: .3rem .8rem; border: 1px solid var(--link); color: var(--link); background: transparent; border-radius: var(--zaokr); cursor: pointer; }
+.kopiuj:hover { background: var(--teraz-tlo); }
+.kopiuj:focus-visible { outline: 3px solid var(--akcent); outline-offset: 2px; }
+@media (max-width: 760px) { .hero-dol { grid-template-columns: minmax(0, 1fr); } }
+.okres-dni { margin-top: .35rem; font-size: .95rem; }
+</style>
+</head>
+<body>
+<header class="naglowek">
+  <div class="wrap naglowek-in">
+    <a class="logo" href="#top">
+      <span class="logo-znak" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="14" opacity=".5"/><path d="M20 9v22M13 16h14" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span class="logo-txt"><span class="logo-gora">Parafia w Dąbkach</span><span class="logo-dol">Matki Bożej z Góry Karmel</span></span>
+    </a>
+    <nav class="menu" aria-label="Sekcje strony">
+      <a href="#msze">Msze</a>
+      <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#historia">Historia</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#dojazd">Dojazd</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-tekst">
+        <p class="eyebrow">Dąbki · gmina Darłowo · diecezja koszalińsko-kołobrzeska</p>
+        <h1>Parafia Matki Bożej z&nbsp;Góry Karmel w&nbsp;Dąbkach</h1>
+        <p class="hero-lead">Witamy parafian i wczasowiczów. Tu znajdziesz godziny mszy świętych, aktualne ogłoszenia i drogę do kościoła.</p>
+        <div class="hero-akcje">
+          <a class="btn btn-glowny" href="#msze">Godziny mszy</a>
+          <a class="btn btn-drugi" href="#dojazd">Jak dojechać</a>
+        </div>
+      </div>
+      <div class="hero-dol">
+      <figure class="hero-foto"><img src="img/kosciol-front.jpg" alt="Kościół Matki Bożej z Góry Karmel w Dąbkach, widok od frontu" width="1600" height="1200"></figure>
+      <aside class="najblizsza" aria-live="polite">
+        <p class="najblizsza-etykieta">Najbliższa msza święta</p>
+        <p class="najblizsza-czas" id="najblizsza-czas">…</p>
+        <p class="najblizsza-dzien" id="najblizsza-dzien"></p>
+        <p class="najblizsza-uwaga">W uroczystości godziny mogą być inne. Sprawdź ogłoszenia.</p>
+      </aside>
+      </div>
+    </div>
+    <svg class="ornament" viewBox="0 0 360 26" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 13h150M210 13h150" stroke-width="1"/><path d="M0 17h140M220 17h140" stroke-width=".6" opacity=".6"/><path d="M180 2l3.2 7.8L191 13l-7.8 3.2L180 24l-3.2-7.8L169 13l7.8-3.2z" fill="currentColor" stroke="none"/><circle cx="160" cy="13" r="2" fill="currentColor" stroke="none"/><circle cx="200" cy="13" r="2" fill="currentColor" stroke="none"/></svg>
+  </section>
+
+  <section id="msze" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Msze święte</h2>
+        <p class="sekcja-opis" id="msze-opis">Rozkład zmienia się z sezonem letnim.</p>
+      </div>
+      <div class="msze-siatka" id="msze-lista"></div>
+    </div>
+  </section>
+
+  <section id="ogloszenia" class="sekcja sekcja-alt">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Ogłoszenia duszpasterskie</h2>
+        <p class="sekcja-opis" id="ogloszenia-data"></p>
+      </div>
+      <ol class="ogloszenia" id="ogloszenia-lista"></ol>
+      <div class="ogloszenia-koniec" id="ogloszenia-koniec"></div>
+      <p class="podpis-proboszcza">ks. Andrzej Pęcherzewski, proboszcz</p>
+    </div>
+  </section>
+
+  <section id="historia" class="sekcja sekcja-alt">
+    <div class="wrap historia">
+      <div class="historia-tekst">
+        <h2>Z historii parafii</h2>
+        <p>Matka Boża z Góry Karmel to tytuł Maryi związany ze szkaplerzem karmelitańskim. Jej wspomnienie Kościół obchodzi 16 lipca, w samym środku sezonu letniego, kiedy Dąbki są pełne gości.</p>
+        <p>Budowę kościoła w Dąbkach rozpoczęto w 1985 roku. Jasne, przestronne wnętrze z drewnianym krzyżem nad ołtarzem i ikoną Matki Bożej gromadzi przez cały rok parafian, a latem także wczasowiczów.</p>
+      </div>
+      <dl class="fakty">
+        <div><dt>Wezwanie</dt><dd>Matki Bożej z Góry Karmel</dd></div>
+        <div><dt>Wspomnienie patronki</dt><dd>16 lipca</dd></div>
+        <div><dt>Budowa kościoła</dt><dd>od 1985 r.</dd></div>
+        <div><dt>Adres</dt><dd>ul. Darłowska 14</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="galeria" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa">
+        <h2>Galeria</h2>
+        <p class="sekcja-opis">Kościół i jego wnętrze. Kliknij zdjęcie, aby je powiększyć.</p>
+      </div>
+      <ul class="galeria">
+        <li><a href="img/kosciol-front.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kosciol-front-maly.jpg" alt="Kościół od frontu" loading="lazy" width="720" height="540"></a><span class="podpis">Kościół od frontu</span></li>
+        <li><a href="img/kosciol-wejscie.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kosciol-wejscie-maly.jpg" alt="Wejście z podjazdem dla wózków" loading="lazy" width="720" height="540"></a><span class="podpis">Wejście z podjazdem dla wózków</span></li>
+        <li><a href="img/wnetrze.jpg" target="_blank" rel="noopener"><img class="foto" src="img/wnetrze-maly.jpg" alt="Wnętrze kościoła" loading="lazy" width="720" height="540"></a><span class="podpis">Wnętrze kościoła</span></li>
+        <li><a href="img/prezbiterium.jpg" target="_blank" rel="noopener"><img class="foto" src="img/prezbiterium-maly.jpg" alt="Ołtarz i krzyż pod świetlikiem" loading="lazy" width="720" height="540"></a><span class="podpis">Ołtarz i krzyż pod świetlikiem</span></li>
+        <li><a href="img/ikona-maryi.jpg" target="_blank" rel="noopener"><img class="foto" src="img/ikona-maryi-maly.jpg" alt="Ikona Matki Bożej" loading="lazy" width="720" height="540"></a><span class="podpis">Ikona Matki Bożej</span></li>
+        <li><a href="img/kaplica-boczna.jpg" target="_blank" rel="noopener"><img class="foto" src="img/kaplica-boczna-maly.jpg" alt="Kaplica Matki Bożej" loading="lazy" width="720" height="540"></a><span class="podpis">Kaplica Matki Bożej</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="dojazd" class="sekcja sekcja-alt">
+    <div class="wrap dojazd">
+      <div class="dojazd-tekst">
+        <h2>Dojazd</h2>
+        <p class="adres">Kościół parafialny<br>ul. Darłowska 14<br>76-156 Dąbki</p>
+        <div class="dojazd-akcje">
+          <a class="btn btn-glowny" id="link-trasa" href="#" target="_blank" rel="noopener">Wyznacz trasę</a>
+          <a class="btn btn-drugi" id="link-mapa" href="#" target="_blank" rel="noopener">Otwórz w Mapach Google</a>
+        </div>
+      </div>
+      <div class="mapa" id="mapa">
+        <div class="mapa-zastepnik">
+          <p>Tu na stronie docelowej pojawi się mapa Google z zaznaczonym kościołem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="sekcja">
+    <div class="wrap">
+      <div class="sekcja-glowa"><h2>Kontakt</h2></div>
+      <dl class="kontakt">
+        <div><dt>Telefon</dt><dd><a href="tel:+48943148608">94 314 86 08</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:dabki@koszalin.opoka.org.pl">dabki@koszalin.opoka.org.pl</a></dd></div>
+        <div class="konto"><dt>Konto parafii (Bank Pekao S.A.)</dt><dd><span id="nr-konta">40 1240 1428 1111 0010 4709 4892</span> <button type="button" class="kopiuj" id="kopiuj-konto">Kopiuj numer</button></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="stopka">
+  <div class="wrap">Parafia Rzymskokatolicka pw. Matki Bożej z Góry Karmel w Dąbkach · ul. Darłowska 14, 76-156 Dąbki</div>
+</footer>
+
+<script>
+(function () {
+  // ===== USTAWIENIA =====
+  // arkuszId: identyfikator Arkusza Google z adresu
+  //   https://docs.google.com/spreadsheets/d/<TU_JEST_ID>/edit
+  // Arkusz musi być udostępniony "Każdy, kto ma link, może wyświetlać".
+  // Puste = strona pokazuje dane przykładowe zapisane poniżej.
+  var KONFIG = {
+    arkuszId: "",
+    zakladki: { msze: "Msze", ogloszenia: "Ogłoszenia" },
+    celMapy: "Kościół Matki Bożej z Góry Karmel, Darłowska 14, 76-156 Dąbki",
+    osadzMape: true
+  };
+
+  // Dane wbudowane, pokazywane, dopóki strona nie jest połączona z Arkuszem Google.
+  // Te same kolumny co w arkuszu.
+  var DANE = {
+    // Dni | Od miesiąca | Do miesiąca | Godziny | Uwagi
+    msze: [
+      ["Niedziele i święta", "wrzesień", "maj", "9:00, 11:00", ""],
+      ["Niedziele i święta", "czerwiec", "sierpień", "9:00, 11:00, 19:30", "Sezon letni"],
+      ["Wtorek–sobota", "wrzesień", "kwiecień", "18:00", ""],
+      ["Wtorek–sobota", "maj", "sierpień", "19:00", ""]
+    ],
+    // Niedziela | Treść ogłoszenia (jeden wiersz = jedno ogłoszenie;
+    // wiersz z "Zakończenie" w pierwszej kolumnie to słowo na koniec, bez numeru)
+    ogloszenia: [
+      ["25 października – 1 listopada 2026", "Msza św. w tym tygodniu: we wtorek, środę, czwartek i piątek o godz. 18:00.\n1 listopada, uroczystość Wszystkich Świętych, przypada w tym roku w niedzielę i msza św. jest odprawiana bez zmian, jak w niedzielę o godz. 9:00 i 11:00."],
+      ["25 października – 1 listopada 2026", "Sakrament pojednania: w dni powszednie pół godziny przed liturgią (lub zaraz po liturgii). Proszę zgłosić potrzebę spowiedzi w zakrystii."],
+      ["25 października – 1 listopada 2026", "Wypominki za Zmarłych rozpoczynamy w Dzień Zaduszny, 2 listopada, a więc w tym roku w poniedziałek po mszy św. o godz. 18:00."],
+      ["25 października – 1 listopada 2026", "Dzisiejszej niedzieli, zgodnie z wcześniejszymi zapowiedziami, prosimy o datki na kwiaty dla dekoracji listopadowych."],
+      ["25 października – 1 listopada 2026", "Intencje mszy św. na dni powszednie listopada można zamawiać codziennie po liturgii."],
+      ["Zakończenie", "Podziwiając mądrość natury i prawdę o przemianach form życia patrzmy na wszystko w świetle wiary w Stwórcę wszystkiego. Szczęść Boże!"]
+    ]
+  };
+
+  var MIESIACE = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paz", "lis", "gru"];
+  var MIESIACE_DOP = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+  var DNI_KIEDY = ["W niedzielę", "W poniedziałek", "We wtorek", "W środę", "W czwartek", "W piątek", "W sobotę"];
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function norm(s) {
+    return String(s || "").toLowerCase().replace(/ł/g, "l").normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
+  }
+
+  // "wrzesień" / "wrz" / "9" -> 9
+  function miesiac(s) {
+    var n = parseInt(s, 10);
+    if (n >= 1 && n <= 12) return n;
+    var w = norm(s).slice(0, 3);
+    var i = MIESIACE.indexOf(w);
+    return i >= 0 ? i + 1 : null;
+  }
+  function wOkresie(m, od, doM) {
+    if (od == null || doM == null) return true;
+    return od <= doM ? (m >= od && m <= doM) : (m >= od || m <= doM);
+  }
+
+  function dzien(slowo) {
+    var w = norm(slowo);
+    if (/^pon/.test(w)) return 1;
+    if (/^wt/.test(w)) return 2;
+    if (/^sr/.test(w)) return 3;
+    if (/^cz/.test(w)) return 4;
+    if (/^(pi|pt)/.test(w)) return 5;
+    if (/^so/.test(w)) return 6;
+    if (/^(ni|nd)/.test(w)) return 0;
+    return null;
+  }
+  // "Wtorek–sobota", "Niedziele i święta", "pon, śr, pt", "codziennie" -> [dni tygodnia]
+  function dniTygodnia(s) {
+    var w = norm(s);
+    if (/codzien/.test(w)) return [0, 1, 2, 3, 4, 5, 6];
+    if (/powszedn/.test(w)) return [1, 2, 3, 4, 5, 6];
+    var wynik = [];
+    w.split(/[,;]| i /).forEach(function (cz) {
+      var zakres = cz.split(/\s*[–—-]\s*/);
+      var a = dzien(zakres[0]);
+      if (a == null) return;
+      if (zakres.length > 1) {
+        var b = dzien(zakres[1]);
+        if (b == null) { wynik.push(a); return; }
+        for (var d = a; ; d = (d + 1) % 7) { wynik.push(d); if (d === b) break; }
+      } else {
+        wynik.push(a);
+      }
+    });
+    return wynik;
+  }
+  function godziny(s) {
+    var out = [], re = /(\d{1,2})[:.](\d{2})/g, m;
+    while ((m = re.exec(String(s)))) out.push({ h: +m[1], m: +m[2], txt: m[1] + ":" + m[2] });
+    return out;
+  }
+
+  function wiersze(dane) {
+    return dane.filter(function (r) { return r && r.some(function (c) { return String(c || "").trim(); }); });
+  }
+
+  function najblizsza(msze, teraz) {
+    for (var d = 0; d < 8; d++) {
+      var data = new Date(teraz.getFullYear(), teraz.getMonth(), teraz.getDate() + d);
+      var dt = data.getDay(), m = data.getMonth() + 1, kandydaci = [];
+      msze.forEach(function (r) {
+        if (dniTygodnia(r[0]).indexOf(dt) < 0) return;
+        if (!wOkresie(m, miesiac(r[1]), miesiac(r[2]))) return;
+        godziny(r[3]).forEach(function (g) {
+          var t = new Date(data); t.setHours(g.h, g.m, 0, 0);
+          if (t > teraz) kandydaci.push({ t: t, txt: g.txt });
+        });
+      });
+      if (kandydaci.length) {
+        kandydaci.sort(function (a, b) { return a.t - b.t; });
+        var kiedy = d === 0 ? "Dziś" : d === 1 ? "Jutro" : DNI_KIEDY[dt];
+        return { czas: kandydaci[0].txt, dzien: kiedy + ", " + data.getDate() + " " + MIESIACE_DOP[data.getMonth()] };
+      }
+    }
+    return null;
+  }
+
+  function rysujMsze(msze) {
+    var teraz = new Date(), m = teraz.getMonth() + 1, grupy = [], mapa = {};
+    msze.forEach(function (r) {
+      var d = dniTygodnia(r[0]);
+      var k = d.length === 1 && d[0] === 0 ? "Niedziele i święta" : "Dni powszednie";
+      if (!mapa[k]) { mapa[k] = []; grupy.push(k); }
+      mapa[k].push(r);
+    });
+    $("msze-lista").innerHTML = grupy.map(function (k) {
+      return '<article class="msze-karta"><h3>' + esc(k) + "</h3><ul>" + mapa[k].map(function (r) {
+        var teraz = wOkresie(m, miesiac(r[1]), miesiac(r[2]));
+        var okres = r[1] || r[2] ? esc(r[1]) + " – " + esc(r[2]) : "cały rok";
+        return '<li class="okres' + (teraz ? " teraz" : "") + '">' +
+          '<div class="okres-glowa"><span class="okres-nazwa">' + okres + "</span>" +
+          (teraz ? '<span class="znacznik">obowiązuje teraz</span>' : "") + "</div>" +
+          (k === "Dni powszednie" ? '<p class="okres-dni">' + esc(r[0]) + "</p>" : "") +
+          '<div class="godziny">' + godziny(r[3]).map(function (g) { return '<span class="godzina">' + g.txt + "</span>"; }).join("") + "</div>" +
+          (r[4] ? '<p class="okres-uwagi">' + esc(r[4]) + "</p>" : "") + "</li>";
+      }).join("") + "</ul></article>";
+    }).join("");
+    $("msze-opis").textContent = "Rozkład zmienia się z sezonem letnim. Zaznaczyliśmy godziny obowiązujące dziś, " +
+      teraz.getDate() + " " + MIESIACE_DOP[teraz.getMonth()] + ".";
+
+    var n = najblizsza(msze, teraz);
+    $("najblizsza-czas").textContent = n ? n.czas : "—";
+    $("najblizsza-dzien").textContent = n ? n.dzien : "Zadzwoń do parafii, aby potwierdzić godzinę.";
+  }
+
+  function rysujOgloszenia(ogl) {
+    function zakonczenie(r) { return norm(r[0]) === "zakonczenie"; }
+    var zwykle = ogl.filter(function (r) { return !zakonczenie(r); });
+    var koniec = ogl.filter(zakonczenie);
+    $("ogloszenia-data").textContent = zwykle.length ? String(zwykle[0][0] || "").trim() : "";
+    $("ogloszenia-lista").innerHTML = zwykle.length ? zwykle.map(function (r) {
+      return "<li>" + esc(r[1]).replace(/\n/g, "<br>") + "</li>";
+    }).join("") : '<li class="brak">Brak ogłoszeń w tym tygodniu.</li>';
+    $("ogloszenia-koniec").innerHTML = koniec.map(function (r) { return "<p>" + esc(r[1]) + "</p>"; }).join("");
+  }
+
+  function csv(tekst) {
+    var rows = [], row = [], pole = "", cudz = false;
+    for (var i = 0; i < tekst.length; i++) {
+      var c = tekst[i];
+      if (cudz) {
+        if (c === '"' && tekst[i + 1] === '"') { pole += '"'; i++; }
+        else if (c === '"') cudz = false;
+        else pole += c;
+      } else if (c === '"') cudz = true;
+      else if (c === ",") { row.push(pole); pole = ""; }
+      else if (c === "\n") { row.push(pole); rows.push(row); row = []; pole = ""; }
+      else if (c !== "\r") pole += c;
+    }
+    if (pole || row.length) { row.push(pole); rows.push(row); }
+    return rows;
+  }
+  function pobierz(zakladka) {
+    var url = "https://docs.google.com/spreadsheets/d/" + KONFIG.arkuszId +
+      "/gviz/tq?tqx=out:csv&headers=1&sheet=" + encodeURIComponent(zakladka);
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function (t) { return wiersze(csv(t).slice(1)); });
+  }
+
+  function mapa() {
+    var cel = encodeURIComponent(KONFIG.celMapy);
+    $("link-trasa").href = "https://www.google.com/maps/dir/?api=1&destination=" + cel;
+    $("link-mapa").href = "https://www.google.com/maps/search/?api=1&query=" + cel;
+    if (KONFIG.osadzMape) {
+      $("mapa").innerHTML = '<iframe title="Mapa dojazdu do kościoła" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=' + cel + '&output=embed"></iframe>';
+    }
+  }
+
+  function rysuj(dane) {
+    rysujMsze(wiersze(dane.msze));
+    rysujOgloszenia(wiersze(dane.ogloszenia));
+  }
+
+  $("kopiuj-konto").addEventListener("click", function () {
+    var nr = $("nr-konta").textContent.replace(/\s/g, ""), btn = this;
+    function zaznacz() { var r = document.createRange(); r.selectNodeContents($("nr-konta")); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+    var p = navigator.clipboard && navigator.clipboard.writeText(nr);
+    if (p) p.then(function () { btn.textContent = "Skopiowano"; }, zaznacz); else zaznacz();
+  });
+
+  mapa();
+  if (!KONFIG.arkuszId) {
+    rysuj(DANE);
+  } else {
+    var z = KONFIG.zakladki;
+    Promise.all([pobierz(z.msze), pobierz(z.ogloszenia)])
+      .then(function (w) { rysuj({ msze: w[0], ogloszenia: w[1] }); })
+      .catch(function () {
+        $("najblizsza-czas").textContent = "—";
+        $("najblizsza-dzien").textContent = "Zadzwoń do parafii, aby potwierdzić godzinę.";
+        $("ogloszenia-data").textContent = "Nie udało się pobrać aktualnych ogłoszeń. Odśwież stronę lub zadzwoń do parafii.";
+      });
+  }
+})();
+</script>
+</body>
+</html>
