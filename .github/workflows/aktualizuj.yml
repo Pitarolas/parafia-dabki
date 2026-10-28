@@ -1,0 +1,40 @@
+# Co kilka godzin pobiera msze i ogłoszenia z Arkusza Google i wpisuje je w index.html,
+# żeby Google i asystenci AI widzieli aktualne dane bez uruchamiania JavaScriptu.
+# Można też uruchomić ręcznie: zakładka Actions → "Aktualizuj stronę z arkusza" → Run workflow.
+name: Aktualizuj stronę z arkusza
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["zrodla/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aktualizuj
+  cancel-in-progress: false
+
+jobs:
+  aktualizuj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pobierz arkusz
+        run: python3 zrodla/pobierz_arkusz.py || echo "Zostają poprzednie dane."
+      - name: Zbuduj stronę
+        run: python3 zrodla/build.py
+      - name: Zapisz zmiany
+        run: |
+          git add -A index.html sitemap.xml robots.txt CNAME .nojekyll zrodla/dane.json
+          if git diff --cached --quiet; then echo "Bez zmian."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Aktualizacja mszy i ogłoszeń z arkusza"
+          git push

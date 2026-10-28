@@ -31,8 +31,8 @@
       <figure class="hero-foto"><img src="img/kosciol-front.jpg" alt="Kościół Matki Bożej z Góry Karmel w Dąbkach, widok od frontu" width="1600" height="1200"></figure>
       <aside class="najblizsza" aria-live="polite">
         <p class="najblizsza-etykieta">Najbliższa msza święta</p>
-        <p class="najblizsza-czas" id="najblizsza-czas">…</p>
-        <p class="najblizsza-dzien" id="najblizsza-dzien"></p>
+        <p class="najblizsza-czas" id="najblizsza-czas">{{NAJBLIZSZA_CZAS}}</p>
+        <p class="najblizsza-dzien" id="najblizsza-dzien">{{NAJBLIZSZA_DZIEN}}</p>
         <p class="najblizsza-uwaga">W uroczystości godziny mogą być inne. Sprawdź ogłoszenia.</p>
       </aside>
       </div>
@@ -46,7 +46,7 @@
         <h2>Msze święte</h2>
         <p class="sekcja-opis" id="msze-opis">Rozkład zmienia się z sezonem letnim.</p>
       </div>
-      <div class="msze-siatka" id="msze-lista"></div>
+      <div class="msze-siatka" id="msze-lista">{{MSZE}}</div>
     </div>
   </section>
 
@@ -54,10 +54,10 @@
     <div class="wrap">
       <div class="sekcja-glowa">
         <h2>Ogłoszenia duszpasterskie</h2>
-        <p class="sekcja-opis" id="ogloszenia-data"></p>
+        <p class="sekcja-opis" id="ogloszenia-data">{{OGL_DATA}}</p>
       </div>
-      <ol class="ogloszenia" id="ogloszenia-lista"></ol>
-      <div class="ogloszenia-koniec" id="ogloszenia-koniec"></div>
+      <ol class="ogloszenia" id="ogloszenia-lista">{{OGLOSZENIA}}</ol>
+      <div class="ogloszenia-koniec" id="ogloszenia-koniec">{{OGL_KONIEC}}</div>
       <p class="podpis-proboszcza">ks. Andrzej Pęcherzewski, proboszcz</p>
     </div>
   </section>

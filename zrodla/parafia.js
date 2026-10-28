@@ -3,7 +3,7 @@
   // arkuszId: identyfikator Arkusza Google z adresu
   //   https://docs.google.com/spreadsheets/d/<TU_JEST_ID>/edit
   // Arkusz musi być udostępniony "Każdy, kto ma link, może wyświetlać".
-  // Puste = strona pokazuje dane przykładowe zapisane poniżej.
+  // Puste = strona pokazuje tylko kopię danych wpisaną w stronę.
   var KONFIG = {
     arkuszId: "16jOSdoO5qnS31DFOOotpNGsSqQRZVqqqgYlffLeZCVU",
     zakladki: { msze: "Msze", ogloszenia: "Ogłoszenia" },
@@ -11,27 +11,11 @@
     osadzMape: false
   };
 
-  // Dane wbudowane, pokazywane, dopóki strona nie jest połączona z Arkuszem Google.
-  // Te same kolumny co w arkuszu.
-  var DANE = {
-    // Dni | Od miesiąca | Do miesiąca | Godziny | Uwagi
-    msze: [
-      ["Niedziele i święta", "wrzesień", "maj", "9:00, 11:00", ""],
-      ["Niedziele i święta", "czerwiec", "sierpień", "9:00, 11:00, 19:30", "Sezon letni"],
-      ["Wtorek–sobota", "wrzesień", "kwiecień", "18:00", ""],
-      ["Wtorek–sobota", "maj", "sierpień", "19:00", ""]
-    ],
-    // Niedziela | Treść ogłoszenia (jeden wiersz = jedno ogłoszenie;
-    // wiersz z "Zakończenie" w pierwszej kolumnie to słowo na koniec, bez numeru)
-    ogloszenia: [
-      ["25 października – 1 listopada 2026", "Msza św. w tym tygodniu: we wtorek, środę, czwartek i piątek o godz. 18:00.\n1 listopada, uroczystość Wszystkich Świętych, przypada w tym roku w niedzielę i msza św. jest odprawiana bez zmian, jak w niedzielę o godz. 9:00 i 11:00."],
-      ["25 października – 1 listopada 2026", "Sakrament pojednania: w dni powszednie pół godziny przed liturgią (lub zaraz po liturgii). Proszę zgłosić potrzebę spowiedzi w zakrystii."],
-      ["25 października – 1 listopada 2026", "Wypominki za Zmarłych rozpoczynamy w Dzień Zaduszny, 2 listopada, a więc w tym roku w poniedziałek po mszy św. o godz. 18:00."],
-      ["25 października – 1 listopada 2026", "Dzisiejszej niedzieli, zgodnie z wcześniejszymi zapowiedziami, prosimy o datki na kwiaty dla dekoracji listopadowych."],
-      ["25 października – 1 listopada 2026", "Intencje mszy św. na dni powszednie listopada można zamawiać codziennie po liturgii."],
-      ["Zakończenie", "Podziwiając mądrość natury i prawdę o przemianach form życia patrzmy na wszystko w świetle wiary w Stwórcę wszystkiego. Szczęść Boże!"]
-    ]
-  };
+  // Ostatnia kopia danych z arkusza, wpisywana przez zrodla/build.py.
+  // Strona pokazuje ją od razu, a potem odświeża z Arkusza Google.
+  // Msze: Dni | Od miesiąca | Do miesiąca | Godziny | Uwagi
+  // Ogłoszenia: Niedziela | Treść (wiersz "Zakończenie" = słowo na koniec, bez numeru)
+  var DANE = /*DANE*/{ msze: [], ogloszenia: [] }/*KONIEC*/;
 
   var MIESIACE = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paz", "lis", "gru"];
   var MIESIACE_DOP = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
@@ -208,16 +192,11 @@
   });
 
   mapa();
-  if (!KONFIG.arkuszId) {
-    rysuj(DANE);
-  } else {
+  rysuj(DANE);
+  if (KONFIG.arkuszId) {
     var z = KONFIG.zakladki;
     Promise.all([pobierz(z.msze), pobierz(z.ogloszenia)])
-      .then(function (w) { rysuj({ msze: w[0], ogloszenia: w[1] }); })
-      .catch(function () {
-        $("najblizsza-czas").textContent = "—";
-        $("najblizsza-dzien").textContent = "Zadzwoń do parafii, aby potwierdzić godzinę.";
-        $("ogloszenia-data").textContent = "Nie udało się pobrać aktualnych ogłoszeń. Odśwież stronę lub zadzwoń do parafii.";
-      });
+      .then(function (w) { if (w[0].length) rysuj({ msze: w[0], ogloszenia: w[1] }); })
+      .catch(function () { /* zostaje kopia wpisana w stronę */ });
   }
 })();
